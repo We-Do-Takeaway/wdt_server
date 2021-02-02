@@ -3,7 +3,7 @@ from pathlib import Path
 import environ
 
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 
 env_file = Path(__file__).parents[1] / ".env"
@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'wdt_api.urls'
+ROOT_URLCONF = 'wdt_server.urls'
 
 TEMPLATES = [
     {
@@ -62,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wdt_api.wsgi.application'
+WSGI_APPLICATION = 'wdt_server.wsgi.application'
 
 
 DATABASES = {

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "wdt_api"
+name = "wdt_server"
 version = "0.1.0"
 description = ""
 authors = ["Zac Tolley <zac@thetolleys.com>"]

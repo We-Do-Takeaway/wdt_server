@@ -1,0 +1,150 @@
+[
+  {
+    "model": "menu.menu",
+    "pk": "11ca8caa-e5dc-494d-bcfd-79fdeb34b1b1",
+    "fields": {
+      "description": "The cafe is all about food to make you feel better when you can't face the world or feel like you are going crazy. Have an all day breakfast, your mothers Sunday roast or help yourself to the biggest bowl of ice-cream will lots of extras",
+      "name": "Cafe comfort and waffles",
+      "photo": "cafe.jpg"
+    }
+  },
+  {
+    "model": "menu.item",
+    "pk": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+    "fields": {
+      "description": "Big bowl of cherries",
+      "name": "Bowl of cherries",
+      "photo": "bowlcherry.jpg"
+    }
+  },
+  {
+    "model": "menu.item",
+    "pk": "83a40fc1-59dc-447d-afe0-6dcfe94bbf20",
+    "fields": {
+      "description": "An amazing mixture of chocolate and cherries",
+      "name": "Chocolate ice-cream surprise",
+      "photo": "icecreamsurp.jpg"
+    }
+  },
+  {
+    "model": "menu.item",
+    "pk": "a4b463c9-f786-4945-af19-fb3103d3984b",
+    "fields": {
+      "description": "Big bowl of sausages",
+      "name": "Plate of sausages",
+      "photo": "plate-sausages.jpg"
+    }
+  },
+  {
+    "model": "menu.section",
+    "pk": "6736bb37-64dc-4f3e-9251-4c2d47eef640",
+    "fields": {
+      "menu": "11ca8caa-e5dc-494d-bcfd-79fdeb34b1b1",
+      "description": "The best stuff",
+      "name": "Desert",
+      "photo": "desert.jpg",
+      "display_order": 2
+    }
+  },
+  {
+    "model": "menu.section",
+    "pk": "ac2f8c68-f358-4708-9e81-fba155fab20f",
+    "fields": {
+      "menu": "11ca8caa-e5dc-494d-bcfd-79fdeb34b1b1",
+      "description": "Stuff to fill you up",
+      "name": "Main",
+      "photo": "main.jpg",
+      "display_order": 1
+    }
+  },
+  {
+    "model": "menu.ingredient",
+    "pk": "3b00a0c0-83c6-41bc-8e05-bfdfa0ca1d3e",
+    "fields": {
+      "description": "Rich yummy belgium chocolate",
+      "name": "Chocolate ice cream",
+      "photo": "chocicecream.jpg"
+    }
+  },
+  {
+    "model": "menu.ingredient",
+    "pk": "c1edee49-aa06-4b49-a9bd-e8083179fe82",
+    "fields": {
+      "description": "In a jar",
+      "name": "Cherry",
+      "photo": "cherry.jpg"
+    }
+  },
+  {
+    "model": "menu.ingredient",
+    "pk": "c55654d8-9b4e-4df5-ae6a-63d1ab3b1bf9",
+    "fields": {
+      "description": "Locally reared",
+      "name": "Sausage",
+      "photo": "sausage.jpg"
+    }
+  },
+  {
+    "model": "menu.sectionitem",
+    "pk": "83ca7cf2-ce51-417f-bc33-1b81eee0e8f0",
+    "fields": {
+      "section": "6736bb37-64dc-4f3e-9251-4c2d47eef640",
+      "item": "83a40fc1-59dc-447d-afe0-6dcfe94bbf20",
+      "display_order": 1
+    }
+  },
+  {
+    "model": "menu.sectionitem",
+    "pk": "91c212ff-7e4e-4838-b9e2-8dfd8f48b9d3",
+    "fields": {
+      "section": "6736bb37-64dc-4f3e-9251-4c2d47eef640",
+      "item": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+      "display_order": 2
+    }
+  },
+  {
+    "model": "menu.sectionitem",
+    "pk": "c67e8e28-9aea-4cfa-9e88-31c29e7ea6e4",
+    "fields": {
+      "section": "ac2f8c68-f358-4708-9e81-fba155fab20f",
+      "item": "a4b463c9-f786-4945-af19-fb3103d3984b",
+      "display_order": 1
+    }
+  },
+  {
+    "model": "menu.itemingredient",
+    "pk": "4458d1f2-704d-4ae0-a87b-204ae519db6b",
+    "fields": {
+      "ingredient": "3b00a0c0-83c6-41bc-8e05-bfdfa0ca1d3e",
+      "item": "83a40fc1-59dc-447d-afe0-6dcfe94bbf20",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "menu.itemingredient",
+    "pk": "6c48c9ad-23a4-4bf2-ba48-c2d5de7f206f",
+    "fields": {
+      "ingredient": "c55654d8-9b4e-4df5-ae6a-63d1ab3b1bf9",
+      "item": "a4b463c9-f786-4945-af19-fb3103d3984b",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "menu.itemingredient",
+    "pk": "9903a06a-784e-4bba-809c-199ef24f948b",
+    "fields": {
+      "ingredient": "c1edee49-aa06-4b49-a9bd-e8083179fe82",
+      "item": "83a40fc1-59dc-447d-afe0-6dcfe94bbf20",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "menu.itemingredient",
+    "pk": "c10b350f-64c3-45ef-af8f-83dc75aaad4d",
+    "fields": {
+      "ingredient": "c1edee49-aa06-4b49-a9bd-e8083179fe82",
+      "item": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+      "quantity": 5
+    }
+  }
+]
