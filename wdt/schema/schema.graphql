@@ -4,6 +4,15 @@ type Section {
   name: String!
   photo: String
   displayOrder: Int
+  items: [SectionItem!]!
+}
+
+type SectionItem {
+  id: ID!
+  description: String
+  name: String!
+  photo: String
+  displayOrder: Int
 }
 
 type Menu {
@@ -14,7 +23,18 @@ type Menu {
   sections: [Section]
 }
 
+type Item {
+  id: ID!
+  description: String
+  name: String!
+  photo: String
+}
+
 type Query {
-    menus: [Menu!]!
-    menu(id: ID!): Menu
+  item(id: ID!): Item
+  items: [Item!]!
+  menu(id: ID!): Menu
+  menus: [Menu!]!
+  section(id: ID!): Section
+  sections: [Section!]!
 }
