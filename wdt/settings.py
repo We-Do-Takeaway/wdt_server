@@ -29,9 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'basket.apps.BasketConfig',
-    'menu.apps.MenuConfig',
-    'order.apps.OrderConfig',
+    'ariadne.contrib.django',
+    'wdt.basket.apps.BasketConfig',
+    'wdt.menu.apps.MenuConfig',
+    'wdt.order.apps.OrderConfig',
 ]
 
 MIDDLEWARE = [
@@ -44,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'wdt_server.urls'
+ROOT_URLCONF = 'wdt.urls'
 
 TEMPLATES = [
     {
@@ -62,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wdt_server.wsgi.application'
+WSGI_APPLICATION = 'wdt.wsgi.application'
 
 
 DATABASES = {

@@ -1,0 +1,11 @@
+type Menu {
+  id: ID!
+  description: String
+  name: String!
+  photo: String
+}
+
+type Query {
+    menus: [Menu!]!
+    menu(id: ID!): Menu
+}

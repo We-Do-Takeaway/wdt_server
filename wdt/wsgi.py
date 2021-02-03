@@ -1,5 +1,5 @@
 """
-WSGI config for wdt_server project.
+WSGI config for wdt project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wdt_server.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wdt.settings')
 
 application = get_wsgi_application()

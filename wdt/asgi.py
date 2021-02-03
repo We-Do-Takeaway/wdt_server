@@ -1,5 +1,5 @@
 """
-ASGI config for wdt_server project.
+ASGI config for wdt project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wdt_server.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wdt.settings')
 
 application = get_asgi_application()

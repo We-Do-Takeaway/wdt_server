@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 
-from menu.models import Item
+from wdt.menu.models import Item
 
 
 class Basket(models.Model):
