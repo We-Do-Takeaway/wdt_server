@@ -1,8 +1,17 @@
+type Section {
+  id: ID!
+  description: String
+  name: String!
+  photo: String
+  displayOrder: Int
+}
+
 type Menu {
   id: ID!
   description: String
   name: String!
   photo: String
+  sections: [Section]
 }
 
 type Query {

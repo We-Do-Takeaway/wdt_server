@@ -1,5 +1,5 @@
 from pathlib import PurePath
-from ariadne import load_schema_from_path, make_executable_schema
+from ariadne import load_schema_from_path, make_executable_schema, snake_case_fallback_resolvers
 
 from wdt.menu.schema import menu_schema
 
@@ -13,4 +13,5 @@ type_defs = load_schema_from_path(parent_dir)
 schema = make_executable_schema(
     type_defs,
     *menu_schema,
+    snake_case_fallback_resolvers,
 )

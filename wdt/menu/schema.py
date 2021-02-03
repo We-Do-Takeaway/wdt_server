@@ -1,5 +1,6 @@
-from wdt.menu.resolvers.menu import query
+from wdt.menu.resolvers.menu import menu_type, query
 
 menu_schema = [
-    query
+    query,
+    menu_type,
 ]
