@@ -30,7 +30,22 @@ type Item {
   photo: String
 }
 
+type Basket {
+  id: ID!
+  items: [BasketItem]
+  ownerId: ID!
+}
+
+type BasketItem {
+  id: ID!
+  description: String
+  name: String!
+  photo: String
+  quantity: Int!
+}
+
 type Query {
+  basket(id: ID!): Basket
   item(id: ID!): Item
   items: [Item!]!
   menu(id: ID!): Menu
