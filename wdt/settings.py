@@ -6,7 +6,8 @@ env = environ.Env(
     DEBUG=(bool, True)
 )
 
-env_file = Path(__file__).parents[1] / ".env"
+root_dir = Path(__file__).parents[1]
+env_file = root_dir / ".env"
 
 if env_file.exists():
     env.read_env(str(env_file))
@@ -67,7 +68,7 @@ WSGI_APPLICATION = 'wdt.wsgi.application'
 
 
 DATABASES = {
-    "default": env.db()
+    "default": env.db("DATABASE_URL"),
 }
 
 
@@ -101,3 +102,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+FIXTURE_DIRS = [str(root_dir / "wdt/fixtures/")]
