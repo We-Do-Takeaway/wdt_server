@@ -13,7 +13,7 @@ class Basket(models.Model):
         default=uuid.uuid4,
         editable=False)
 
-    owner_id = models.UUIDField(editable=True)
+    owner_id = models.UUIDField(editable=True, blank=True, null=True)
 
 
 class BasketItem(models.Model):

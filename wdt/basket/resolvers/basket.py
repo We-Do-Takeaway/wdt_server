@@ -6,7 +6,7 @@ basket_query = ObjectType("Query")
 basket_type = ObjectType("Basket")
 
 
-@basket_query.field('basket')
+@basket_query.field("basket")
 def resolve_basket(obj, info, *, id):
     try:
         return Basket.objects.get(pk=id)
@@ -14,6 +14,6 @@ def resolve_basket(obj, info, *, id):
         return None
 
 
-@basket_type.field('items')
+@basket_type.field("items")
 def resolve_basket_items(basket, info):
     return basket.basketitem_set.all().order_by("item__name")

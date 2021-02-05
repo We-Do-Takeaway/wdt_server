@@ -53,3 +53,15 @@ type Query {
   section(id: ID!): Section
   sections: [Section!]!
 }
+
+input BasketItemInput {
+  itemId: ID!
+  quantity: Int!
+}
+
+type Mutation {
+  addBasketItem(basketId: ID!, basketItem: BasketItemInput!): Basket!
+  updateBasketItem(basketId: ID!, basketItem: BasketItemInput!): Basket!
+  removeBasketItem(basketId: ID!, itemId: ID!): Basket!
+  clearBasket(id: ID!): Basket!
+}
