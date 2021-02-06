@@ -12,7 +12,8 @@ class Order(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
-        editable=False)
+        editable=False,
+    )
     name = models.CharField(max_length=100)
     address_1 = models.CharField(max_length=100)
     address_2 = models.CharField(max_length=100)
@@ -40,10 +41,11 @@ class OrderItem(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
-        editable=False)
+        editable=False,
+    )
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
     def __str__(self):
-        return f'{self.item.name}:{self.quantity}'
+        return f"{self.item.name}:{self.quantity}"

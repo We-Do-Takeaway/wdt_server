@@ -30,7 +30,10 @@ def resolve_add_basket_item(obj, info, *, basket_id, basket_item):
 
     # Check if there is an entry for this item already and update it, otherwise add a new one
     try:
-        db_basket_item = BasketItem.objects.get(item_id=basket_item["item_id"], basket_id=basket_id)
+        db_basket_item = BasketItem.objects.get(
+            item_id=basket_item["item_id"],
+            basket_id=basket_id,
+        )
         db_basket_item.quantity += basket_item["quantity"]
     except BasketItem.DoesNotExist:
         db_basket_item = BasketItem(
@@ -54,7 +57,10 @@ def resolve_update_basket_item(obj, info, *, basket_id, basket_item):
     # Check if there is a basket to add to, if not then remove it
     try:
         basket = Basket.objects.get(pk=basket_id)
-        old_item = BasketItem.objects.get(item_id=basket_item["item_id"], basket_id=basket_id)
+        old_item = BasketItem.objects.get(
+            item_id=basket_item["item_id"],
+            basket_id=basket_id,
+        )
         old_item.delete()
     except Basket.DoesNotExist:
         return None

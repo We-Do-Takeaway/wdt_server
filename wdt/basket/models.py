@@ -12,7 +12,8 @@ class Basket(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
-        editable=False)
+        editable=False,
+    )
 
     owner_id = models.UUIDField(editable=True, blank=True, null=True)
 
@@ -32,10 +33,11 @@ class BasketItem(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
-        editable=False)
+        editable=False,
+    )
     basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
     def __str__(self):
-        return f'{self.item.name}:{self.quantity}'
+        return f"{self.item.name}:{self.quantity}"

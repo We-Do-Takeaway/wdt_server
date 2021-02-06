@@ -7,7 +7,7 @@ from django.views.generic import RedirectView
 from wdt.schema.schema import schema
 
 urlpatterns = [
-    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
-    path('admin/', admin.site.urls),
-    path('graphql/', GraphQLView.as_view(schema=schema), name='graphql'),
+    url(r"^favicon\.ico$", RedirectView.as_view(url="/static/images/favicon.ico")),
+    path("admin/", admin.site.urls),
+    path("graphql/", GraphQLView.as_view(schema=schema), name="graphql"),
 ]
