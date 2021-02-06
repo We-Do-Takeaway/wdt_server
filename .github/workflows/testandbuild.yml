@@ -8,7 +8,44 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  lint:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.1.1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: false
+          virtualenvs-path: ~/.virtualenvs
+
+      - name: Cache Poetry virtualenv
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: ~/.virtualenvs
+          key: poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            poetry-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install Dependencies
+        run: poetry install --no-interaction --no-root
+        if: steps.cache.outputs.cache-hit != 'true'
+
+      - name: Flake8
+        run: poetry run flake8
+
+      - name: Black code format
+        run: poetry run black . --check
+
+  test:
     runs-on: ubuntu-20.04
 
     services:
@@ -59,12 +96,6 @@ jobs:
     - name: Install Dependencies
       run: poetry install --no-interaction --no-root
       if: steps.cache.outputs.cache-hit != 'true'
-
-    - name: Flake8
-      run: poetry run flake8
-
-    - name: Black code format
-      run: poetry run black . --check
 
     - name: Run migrations
       run: poetry run python manage.py migrate
