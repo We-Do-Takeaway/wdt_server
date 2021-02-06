@@ -70,6 +70,6 @@ jobs:
       run: poetry run python manage.py migrate
 
     - name: Tests
-      run: poetry run pytest -v
+      run: poetry run pytest --cov --junit-xml=test-output/test-output.xml --cov-report xml:test-output/coverage.xml
       env:
         DJANGO_SETTINGS_MODULE: wdt.settings
