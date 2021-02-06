@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       postgres:
@@ -39,7 +39,7 @@ jobs:
       with:
         virtualenvs-create: true
         virtualenvs-in-project: false
-        virtualenv-path: ~/.virtualenvs
+        virtualenvs-path: ~/.virtualenvs
 
     - name: Cache Poetry virtualenv
       uses: actions/cache@v2
