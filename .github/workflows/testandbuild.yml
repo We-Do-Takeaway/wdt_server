@@ -9,22 +9,28 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-20.04
 
     services:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: wdt
-          POSTGRES_PASSWORD: password
           POSTGRES_DB: wdt
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: wdt
+        ports:
+          - 5432:5432
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
+    env:
+      SECRET_KEY: secret
+      DATABASE_URL: postgres://wdt:password@localhost:5432/wdt
+      DEBUG: True
 
     steps:
     - uses: actions/checkout@v2
@@ -60,10 +66,10 @@ jobs:
     - name: Black code format
       run: poetry run black . --check
 
+    - name: Run migrations
+      run: poetry run python manage.py migrate
+
     - name: Tests
+      run: poetry run pytest -v
       env:
-        DATABASE_URL: postgres://wdt:password@postgres/wdt
-        DEBUG: True
         DJANGO_SETTINGS_MODULE: wdt.settings
-        SECRET_KEY: secret
-      run: poetry run pytest --cov
