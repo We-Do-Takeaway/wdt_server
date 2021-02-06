@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = wdt
+omit =
+  */migrations/*
+  */test_*
+  */tests/*

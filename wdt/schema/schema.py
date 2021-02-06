@@ -1,4 +1,5 @@
 from pathlib import PurePath
+
 from ariadne import load_schema_from_path, make_executable_schema, snake_case_fallback_resolvers
 
 from wdt.basket.schema import basket_schema

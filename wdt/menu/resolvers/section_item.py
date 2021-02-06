@@ -4,7 +4,7 @@ section_item_type = ObjectType("SectionItem")
 
 
 @section_item_type.field("id")
-def resolve_name(sectionitem, info):
+def resolve_id(sectionitem, info):
     return sectionitem.item_id
 
 
@@ -14,16 +14,15 @@ def resolve_name(sectionitem, info):
 
 
 @section_item_type.field("description")
-def resolve_name(sectionitem, info):
+def resolve_description(sectionitem, info):
     return sectionitem.item.description
 
 
 @section_item_type.field("photo")
-def resolve_name(sectionitem, info):
+def resolve_photo(sectionitem, info):
     return sectionitem.item.photo
 
 
 @section_item_type.field("displayOrder")
-def resolve_name(sectionitem, info):
+def resolve_display_order(sectionitem, info):
     return sectionitem.display_order
-

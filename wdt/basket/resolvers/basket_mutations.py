@@ -1,4 +1,4 @@
-from ariadne import ObjectType, convert_kwargs_to_snake_case
+from ariadne import convert_kwargs_to_snake_case, ObjectType
 from django.db import transaction
 
 from wdt.basket.models import Basket, BasketItem

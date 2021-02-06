@@ -1,0 +1,6 @@
+[flake8]
+exclude = .git,fixtures,*.txt,.direnv,.pytest_cache,*/migrations/*,manage.py
+extend-ignore = E203
+max-line-length = 120
+application-import-names = wdt
+import_order_style = smarkets

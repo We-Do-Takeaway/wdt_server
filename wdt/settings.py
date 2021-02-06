@@ -3,7 +3,7 @@ from pathlib import Path
 import environ
 
 env = environ.Env(
-    DEBUG=(bool, True)
+    DEBUG=(bool, True),
 )
 
 root_dir = Path(__file__).parents[1]
@@ -100,7 +100,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / "static",
 ]
 
 FIXTURE_DIRS = [str(root_dir / "wdt/fixtures/")]

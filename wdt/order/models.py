@@ -1,4 +1,5 @@
 import uuid
+
 from django.db import models
 
 from wdt.menu.models import Item
@@ -31,8 +32,8 @@ class OrderItem(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["order_id", "item_id"],
-                name="unique_order_and_item"
-            )
+                name="unique_order_and_item",
+            ),
         ]
         db_table = "order_item"
 

@@ -38,8 +38,8 @@ class TestAddBasketItem:
             "basketId": EXISTING_BASKET_ID,
             "basketItem": {
                 "itemId": SAUSAGES_ID,
-                "quantity": 1
-            }
+                "quantity": 1,
+            },
         }
 
         response = graphql_request(MUTATION_QUERY, variables=variables)
@@ -53,9 +53,9 @@ class TestAddBasketItem:
                         "id": SAUSAGES_ID,
                         "name": "Plate of sausages",
                         "quantity": 1,
-                    }
-                ]
-            }
+                    },
+                ],
+            },
         }
 
     def test_add_valid_item_to_unknown_basket(self, graphql_request):
@@ -63,8 +63,8 @@ class TestAddBasketItem:
             "basketId": NEW_BASKET_ID,
             "basketItem": {
                 "itemId": SAUSAGES_ID,
-                "quantity": 1
-            }
+                "quantity": 1,
+            },
         }
 
         response = graphql_request(MUTATION_QUERY, variables=variables)
@@ -78,9 +78,9 @@ class TestAddBasketItem:
                         "id": SAUSAGES_ID,
                         "name": "Plate of sausages",
                         "quantity": 1,
-                    }
-                ]
-            }
+                    },
+                ],
+            },
         }
 
     def test_add_invalid_item_to_existing_basket(self, graphql_request):
@@ -88,8 +88,8 @@ class TestAddBasketItem:
             "basketId": EXISTING_BASKET_ID,
             "basketItem": {
                 "itemId": INVALID_ITEM_ID,
-                "quantity": 1
-            }
+                "quantity": 1,
+            },
         }
 
         response = graphql_request(MUTATION_QUERY, variables=variables)
@@ -110,8 +110,8 @@ class TestAddBasketItem:
             "basketId": EXISTING_BASKET_ID,
             "basketItem": {
                 "itemId": CHERRIES_ID,
-                "quantity": 1
-            }
+                "quantity": 1,
+            },
         }
 
         response = graphql_request(MUTATION_QUERY, variables=variables)
@@ -131,8 +131,8 @@ class TestAddBasketItem:
                         "name": "Plate of sausages",
                         "quantity": 1,
                     },
-                ]
-            }
+                ],
+            },
         }
 
     def test_add_duplicate_item_to_basket(self, graphql_request):
@@ -148,8 +148,8 @@ class TestAddBasketItem:
             "basketId": EXISTING_BASKET_ID,
             "basketItem": {
                 "itemId": SAUSAGES_ID,
-                "quantity": 1
-            }
+                "quantity": 1,
+            },
         }
 
         response = graphql_request(MUTATION_QUERY, variables=variables)
@@ -163,9 +163,9 @@ class TestAddBasketItem:
                         "id": SAUSAGES_ID,
                         "name": "Plate of sausages",
                         "quantity": 2,
-                    }
-                ]
-            }
+                    },
+                ],
+            },
         }
 
     def test_too_many_to_basket(self, graphql_request):
@@ -173,8 +173,8 @@ class TestAddBasketItem:
             "basketId": NEW_BASKET_ID,
             "basketItem": {
                 "itemId": SAUSAGES_ID,
-                "quantity": 99
-            }
+                "quantity": 99,
+            },
         }
 
         response = graphql_request(MUTATION_QUERY, variables=variables)

@@ -1,4 +1,5 @@
 import uuid
+
 from django.db import models
 
 from wdt.menu.models import Item
@@ -23,8 +24,8 @@ class BasketItem(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["basket_id", "item_id"],
-                name="unique_basket_and_item"
-            )
+                name="unique_basket_and_item",
+            ),
         ]
         db_table = "basket_item"
 

@@ -1,4 +1,5 @@
 import uuid
+
 from django.db import models
 
 
@@ -93,8 +94,8 @@ class SectionItem(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["section_id", "item_id"],
-                name="unique_section_and_item"
-            )
+                name="unique_section_and_item",
+            ),
         ]
         db_table = "section_item"
 
@@ -117,8 +118,8 @@ class ItemIngredient(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["item_id", "ingredient_id"],
-                name="unique_item_and_ingredient"
-            )
+                name="unique_item_and_ingredient",
+            ),
         ]
         db_table = "item_ingredient"
 
