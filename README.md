@@ -1,3 +1,5 @@
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=We-Do-Takeaway_wdt_server)
+
 # We Do Takeaway - Application Server
 The application server is responsible for providing a GraphQL API to We Do Takeaway client application, and a basic admin tool to manage data.
 
