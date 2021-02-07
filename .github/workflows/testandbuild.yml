@@ -120,4 +120,4 @@ jobs:
           -Dsonar.python.coveragePlugin=coverage
           -Dsonar.python.xunit.reportPath=test-output/test-output.xml
           -Dsonar.sources=wdt
-          -Dsonar.verbose=true
+          -Dsonar.tests=**/tests/**/*
