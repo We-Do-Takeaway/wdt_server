@@ -104,3 +104,20 @@ jobs:
       run: poetry run pytest --cov --junit-xml=test-output/test-output.xml --cov-report xml:test-output/coverage.xml
       env:
         DJANGO_SETTINGS_MODULE: wdt.settings
+
+    - name: Analyze with SonarCloud
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        projectBaseDir: .
+        args: >
+          -Dsonar.organization=we-do-takeaway
+          -Dsonar.projectKey=We-Do-Takeaway_wdt_server
+          -Dsonar.language=py
+          -Dsonar.python.coverage.reportPaths=test-output/coverage.xml
+          -Dsonar.python.coveragePlugin=coverage
+          -Dsonar.python.xunit.reportPath=test-output/test-output.xml
+          -Dsonar.sources=wdt
+          -Dsonar.verbose=true
