@@ -120,3 +120,11 @@ jobs:
           -Dsonar.python.coveragePlugin=coverage
           -Dsonar.python.xunit.reportPath=test-output/test-output.xml
           -Dsonar.sources=wdt
+
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        files: test-output/**/test-output.xml
