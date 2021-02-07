@@ -105,6 +105,11 @@ jobs:
       env:
         DJANGO_SETTINGS_MODULE: wdt.settings
 
+    - name: fix code coverage paths
+      working-directory: ./test-output
+      run: |
+        sed -i 's/\/home\/runner\/work\/wdt_server\/wdt_server\//\/github\/workspace\//g' coverage.xml
+
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
       env:
@@ -119,7 +124,6 @@ jobs:
           -Dsonar.python.coverage.reportPaths=test-output/coverage.xml
           -Dsonar.python.coveragePlugin=coverage
           -Dsonar.python.xunit.reportPath=test-output/test-output.xml
-          -Dsonar.sources=wdt
 
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1
