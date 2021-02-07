@@ -145,6 +145,15 @@ jobs:
         name: coverage
         path: test-output/coverage.xml
 
+    - name: cat
+      working-directory: ./test-output
+      run: cat coverage.xml
+
+    - name: Fix code coverage paths
+      working-directory: ./test-output
+      run: |
+        sed -i 's/\/home\/runner\/work\/wdt_server\/wdt_server\//\/github\/workspace\//g' coverage.xml
+
     - name: Fix code coverage paths
       working-directory: ./test-output
       run: |
