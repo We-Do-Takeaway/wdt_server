@@ -95,36 +95,6 @@ class TestAddBasketItem:
 
         assert errors[0]["message"] == "The item id does not exist"
 
-    def test_add_second_item_to_basket(self, graphql_request, test_values):
-        variables = {
-            "basketId": test_values.EXISTING_BASKET_ID,
-            "basketItem": {
-                "itemId": test_values.SAUSAGES_ID,
-                "quantity": 1,
-            },
-        }
-
-        response = graphql_request(MUTATION_QUERY, variables=variables)
-        assert response.status_code == HTTPStatus.OK
-        response_data = response.json()["data"]
-        assert response_data == {
-            "addBasketItem": {
-                "id": test_values.EXISTING_BASKET_ID,
-                "items": [
-                    {
-                        "id": test_values.CHERRIES_ID,
-                        "name": test_values.CHERRIES_NAME,
-                        "quantity": 1,
-                    },
-                    {
-                        "id": test_values.SAUSAGES_ID,
-                        "name": test_values.SAUSAGES_NAME,
-                        "quantity": 1,
-                    },
-                ],
-            },
-        }
-
     def test_add_duplicate_item_to_basket(self, graphql_request, test_values):
         variables = {
             "basketId": test_values.EXISTING_BASKET_ID,
