@@ -145,10 +145,6 @@ jobs:
         name: coverage
         path: test-output
 
-    - name: cat
-      working-directory: ./test-output
-      run: cat coverage.xml
-
     - name: Fix code coverage paths
       working-directory: ./test-output
       run: |
@@ -174,5 +170,3 @@ jobs:
           -Dsonar.python.coveragePlugin=coverage
           -Dsonar.python.xunit.reportPath=test-output/test-output.xml
           -Dsonar.sources=wdt
-          -Dsonar.verbose=true
-
