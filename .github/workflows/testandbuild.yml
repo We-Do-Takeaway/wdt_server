@@ -137,13 +137,13 @@ jobs:
       uses: actions/download-artifact@master
       with:
         name: test-output
-        path: test-output/test-output.xml
+        path: test-output
 
     - name: Download coverage
       uses: actions/download-artifact@master
       with:
         name: coverage
-        path: test-output/coverage.xml
+        path: test-output
 
     - name: cat
       working-directory: ./test-output
