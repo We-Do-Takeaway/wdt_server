@@ -63,5 +63,5 @@ type Mutation {
   addBasketItem(basketId: ID!, basketItem: BasketItemInput!): Basket!
   updateBasketItem(basketId: ID!, basketItem: BasketItemInput!): Basket!
   removeBasketItem(basketId: ID!, itemId: ID!): Basket!
-  clearBasket(id: ID!): Basket!
+  clearBasket(basketId: ID!): Basket!
 }
