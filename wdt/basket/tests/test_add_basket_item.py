@@ -26,7 +26,9 @@ mutation AddBasketItem(
 EXISTING_BASKET_ID = "b63920b5-d2ca-4e5a-a7c5-05b7cbf00cc3"
 NEW_BASKET_ID = "b63920b5-d2ca-4e5a-a7c5-05b7cbf00cc4"
 SAUSAGES_ID = "a4b463c9-f786-4945-af19-fb3103d3984b"
+SAUSAGES_NAME = "Plate of sausages"
 CHERRIES_ID = "124cec9c-0352-48a4-835f-5c4e3d45f69b"
+CHERRIES_NAME = "Bowl of cherries"
 INVALID_ITEM_ID = "124cec9c-0352-48a4-835f-5c4e3d45f69c"
 
 
@@ -51,7 +53,7 @@ class TestAddBasketItem:
                 "items": [
                     {
                         "id": SAUSAGES_ID,
-                        "name": "Plate of sausages",
+                        "name": SAUSAGES_NAME,
                         "quantity": 1,
                     },
                 ],
@@ -76,7 +78,7 @@ class TestAddBasketItem:
                 "items": [
                     {
                         "id": SAUSAGES_ID,
-                        "name": "Plate of sausages",
+                        "name": SAUSAGES_NAME,
                         "quantity": 1,
                     },
                 ],
@@ -123,12 +125,12 @@ class TestAddBasketItem:
                 "items": [
                     {
                         "id": CHERRIES_ID,
-                        "name": "Bowl of cherries",
+                        "name": CHERRIES_NAME,
                         "quantity": 1,
                     },
                     {
                         "id": SAUSAGES_ID,
-                        "name": "Plate of sausages",
+                        "name": SAUSAGES_NAME,
                         "quantity": 1,
                     },
                 ],
@@ -161,7 +163,7 @@ class TestAddBasketItem:
                 "items": [
                     {
                         "id": SAUSAGES_ID,
-                        "name": "Plate of sausages",
+                        "name": SAUSAGES_NAME,
                         "quantity": 2,
                     },
                 ],
