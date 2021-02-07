@@ -105,7 +105,47 @@ jobs:
       env:
         DJANGO_SETTINGS_MODULE: wdt.settings
 
-    - name: fix code coverage paths
+    - name: Upload test output
+      uses: actions/upload-artifact@master
+      with:
+        name: test-output
+        path: test-output/test-output.xml
+
+    - name: Upload coverage
+      uses: actions/upload-artifact@master
+      with:
+        name: coverage
+        path: test-output/coverage.xml
+
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        files: test-output/**/test-output.xml
+
+  sonar-cloud:
+    name: Sonar Cloud
+    runs-on: ubuntu-20.04
+    needs: test
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Download test output
+      uses: actions/download-artifact@master
+      with:
+        name: test-output
+        path: test-output/test-output.xml
+
+    - name: Download coverage
+      uses: actions/download-artifact@master
+      with:
+        name: coverage
+        path: test-output/coverage.xml
+
+    - name: Fix code coverage paths
       working-directory: ./test-output
       run: |
         sed -i 's/\/home\/runner\/work\/wdt_server\/wdt_server\//\/github\/workspace\//g' coverage.xml
@@ -125,10 +165,5 @@ jobs:
           -Dsonar.python.coveragePlugin=coverage
           -Dsonar.python.xunit.reportPath=test-output/test-output.xml
           -Dsonar.sources=wdt
-    - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1
-      if: always()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        files: test-output/**/test-output.xml
+          -Dsonar.verbose=true
+
