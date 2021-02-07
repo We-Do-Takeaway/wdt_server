@@ -146,5 +146,21 @@
       "item": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
       "quantity": 5
     }
+  },
+  {
+    "model": "basket.basket",
+    "pk": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
+    "fields": {
+      "owner_id": "03b9d6a5-2561-4567-90e9-452e8b39ce86"
+    }
+  },
+  {
+    "model": "basket.basketitem",
+    "pk": "c7a6617f-ab11-4218-b5c4-61312489ab9d",
+    "fields": {
+      "basket_id": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
+      "item_id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+      "quantity": 1
+    }
   }
 ]
