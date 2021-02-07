@@ -11,8 +11,8 @@ from wdt.shared.exceptions import (
 
 basket_mutation = ObjectType("Mutation")
 
-BASKET_DOESNT_EXIST = ""
-ITEM_DOESNT_EXIST = "The item id does not exist"
+INVALID_BASKET = "Invalid basket id"
+INVALID_ITEM = "Invalid item id"
 INVALID_QUANTITY = "Invalid quantity"
 MAX_ITEMS_ALLOWED = 50
 
@@ -32,7 +32,7 @@ def resolve_add_basket_item(obj, info, *, basket_id, basket_item):
     try:
         Item.objects.get(pk=basket_item["item_id"])
     except Item.DoesNotExist:
-        raise InvalidItemError(ITEM_DOESNT_EXIST)
+        raise InvalidItemError(INVALID_ITEM)
 
     # If there is an entry for this item already then add this quantity to it
     # as the customer wants to add more
@@ -66,13 +66,13 @@ def resolve_update_basket_item(obj, info, *, basket_id, basket_item):
     try:
         basket = Basket.objects.get(pk=basket_id)
     except Basket.DoesNotExist:
-        raise InvalidBasketError("Invalid basket id")
+        raise InvalidBasketError(INVALID_BASKET)
 
     quantity = basket_item["quantity"]
 
     # Make sure we aren't trying to set an invalid quantity
     if quantity > 99 or quantity < 0:
-        raise InvalidItemError("Invalid quantity")
+        raise InvalidItemError(INVALID_QUANTITY)
 
     # The find the basket item entry to update
     try:
@@ -91,7 +91,7 @@ def resolve_update_basket_item(obj, info, *, basket_id, basket_item):
     # There is no entry with that combination of basket id and item
     # We know the basket exists so there's no item entry for it
     except BasketItem.DoesNotExist:
-        raise InvalidBasketOperation("Invalid item id")
+        raise InvalidBasketOperation(INVALID_ITEM)
 
     # All done, return the basket and let the type resolvers get the rest
     return basket
@@ -105,12 +105,12 @@ def resolve_remove_basket_item(obj, info, *, basket_id, item_id):
     try:
         basket = Basket.objects.get(pk=basket_id)
     except Basket.DoesNotExist:
-        raise InvalidBasketError("Invalid basket id")
+        raise InvalidBasketError(INVALID_BASKET)
 
     try:
         BasketItem.objects.get(item_id=item_id, basket_id=basket_id).delete()
     except BasketItem.DoesNotExist:
-        raise InvalidBasketOperation("Invalid item id")
+        raise InvalidBasketOperation(INVALID_ITEM)
 
     return basket
 
@@ -123,7 +123,7 @@ def resolve_clear_basket(obj, info, *, basket_id):
     try:
         basket = Basket.objects.get(pk=basket_id)
     except Basket.DoesNotExist:
-        raise InvalidBasketError("Invalid basket id")
+        raise InvalidBasketError(INVALID_BASKET)
 
     basket.basketitem_set.all().delete()
 

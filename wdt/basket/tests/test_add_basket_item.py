@@ -93,7 +93,7 @@ class TestAddBasketItem:
         response = graphql_request(MUTATION_QUERY, variables=variables)
         errors = response.json()["errors"]
 
-        assert errors[0]["message"] == "The item id does not exist"
+        assert errors[0]["message"] == "Invalid item id"
 
     def test_add_duplicate_item_to_basket(self, graphql_request, test_values):
         variables = {
