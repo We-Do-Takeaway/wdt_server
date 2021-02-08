@@ -1,3 +1,4 @@
+import uuid
 from http import HTTPStatus
 
 import pytest
@@ -28,7 +29,7 @@ mutation RemoveBasketItem(
 class TestRemoveBasketItem:
     def test_remove_item_in_basket(self, graphql_request, test_values):
         variables = {
-            "basketId": test_values.EXISTING_BASKET_ID,
+            "basketId": test_values.BASKET_ID,
             "itemId": test_values.CHERRIES_ID,
         }
 
@@ -37,14 +38,14 @@ class TestRemoveBasketItem:
         response_data = response.json()["data"]
         assert response_data == {
             "removeBasketItem": {
-                "id": test_values.EXISTING_BASKET_ID,
+                "id": test_values.BASKET_ID,
                 "items": [],
             },
         }
 
     def test_remove_invalid_item_in_basket(self, graphql_request, test_values):
         variables = {
-            "basketId": test_values.EXISTING_BASKET_ID,
+            "basketId": test_values.BASKET_ID,
             "itemId": test_values.SAUSAGES_ID,
         }
 
@@ -55,7 +56,7 @@ class TestRemoveBasketItem:
 
     def test_remove_item_in_invalid_basket(self, graphql_request, test_values):
         variables = {
-            "basketId": test_values.INVALID_BASKET_ID,
+            "basketId": str(uuid.uuid4()),
             "itemId": test_values.CHERRIES_ID,
         }
 

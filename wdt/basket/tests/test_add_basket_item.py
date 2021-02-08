@@ -1,3 +1,4 @@
+import uuid
 from http import HTTPStatus
 
 import pytest
@@ -22,13 +23,16 @@ mutation AddBasketItem(
 }
 """
 
+SAUSAGES_NAME = "Plate of sausages"
+CHERRIES_NAME = "Bowl of cherries"
+
 
 @pytest.mark.django_db
 @pytest.mark.usefixtures("example_data")
 class TestAddBasketItem:
     def test_add_valid_item_to_existing_basket(self, graphql_request, test_values):
         variables = {
-            "basketId": test_values.EXISTING_BASKET_ID,
+            "basketId": test_values.BASKET_ID,
             "basketItem": {
                 "itemId": test_values.SAUSAGES_ID,
                 "quantity": 1,
@@ -40,16 +44,16 @@ class TestAddBasketItem:
         response_data = response.json()["data"]
         assert response_data == {
             "addBasketItem": {
-                "id": test_values.EXISTING_BASKET_ID,
+                "id": test_values.BASKET_ID,
                 "items": [
                     {
                         "id": test_values.CHERRIES_ID,
-                        "name": test_values.CHERRIES_NAME,
+                        "name": CHERRIES_NAME,
                         "quantity": 1,
                     },
                     {
                         "id": test_values.SAUSAGES_ID,
-                        "name": test_values.SAUSAGES_NAME,
+                        "name": SAUSAGES_NAME,
                         "quantity": 1,
                     },
                 ],
@@ -57,8 +61,10 @@ class TestAddBasketItem:
         }
 
     def test_add_valid_item_to_unknown_basket(self, graphql_request, test_values):
+        new_basket_id = str(uuid.uuid4())
+
         variables = {
-            "basketId": test_values.NEW_BASKET_ID,
+            "basketId": new_basket_id,
             "basketItem": {
                 "itemId": test_values.SAUSAGES_ID,
                 "quantity": 1,
@@ -70,11 +76,11 @@ class TestAddBasketItem:
         response_data = response.json()["data"]
         assert response_data == {
             "addBasketItem": {
-                "id": test_values.NEW_BASKET_ID,
+                "id": str(new_basket_id),
                 "items": [
                     {
                         "id": test_values.SAUSAGES_ID,
-                        "name": test_values.SAUSAGES_NAME,
+                        "name": SAUSAGES_NAME,
                         "quantity": 1,
                     },
                 ],
@@ -83,9 +89,9 @@ class TestAddBasketItem:
 
     def test_add_invalid_item_to_existing_basket(self, graphql_request, test_values):
         variables = {
-            "basketId": test_values.EXISTING_BASKET_ID,
+            "basketId": test_values.BASKET_ID,
             "basketItem": {
-                "itemId": test_values.INVALID_ITEM_ID,
+                "itemId": str(uuid.uuid4()),
                 "quantity": 1,
             },
         }
@@ -97,7 +103,7 @@ class TestAddBasketItem:
 
     def test_add_duplicate_item_to_basket(self, graphql_request, test_values):
         variables = {
-            "basketId": test_values.EXISTING_BASKET_ID,
+            "basketId": test_values.BASKET_ID,
             "basketItem": {
                 "itemId": test_values.CHERRIES_ID,
                 "quantity": 1,
@@ -109,11 +115,11 @@ class TestAddBasketItem:
         response_data = response.json()["data"]
         assert response_data == {
             "addBasketItem": {
-                "id": test_values.EXISTING_BASKET_ID,
+                "id": test_values.BASKET_ID,
                 "items": [
                     {
                         "id": test_values.CHERRIES_ID,
-                        "name": test_values.CHERRIES_NAME,
+                        "name": CHERRIES_NAME,
                         "quantity": 2,
                     },
                 ],
@@ -121,8 +127,10 @@ class TestAddBasketItem:
         }
 
     def test_too_many_to_basket(self, graphql_request, test_values):
+        new_basket_id = str(uuid.uuid4())
+
         variables = {
-            "basketId": test_values.NEW_BASKET_ID,
+            "basketId": new_basket_id,
             "basketItem": {
                 "itemId": test_values.SAUSAGES_ID,
                 "quantity": 99,
@@ -136,8 +144,10 @@ class TestAddBasketItem:
         assert errors[0]["message"] == "Invalid quantity"
 
     def test_too_few_to_basket(self, graphql_request, test_values):
+        new_basket_id = str(uuid.uuid4())
+
         variables = {
-            "basketId": test_values.NEW_BASKET_ID,
+            "basketId": new_basket_id,
             "basketItem": {
                 "itemId": test_values.SAUSAGES_ID,
                 "quantity": -1,

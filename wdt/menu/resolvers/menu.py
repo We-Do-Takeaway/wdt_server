@@ -1,6 +1,7 @@
 from ariadne import ObjectType
 
 from wdt.menu.models import Menu
+from wdt.shared.exceptions import InvalidMenuError
 
 menu_query = ObjectType("Query")
 menu_type = ObjectType("Menu")
@@ -11,7 +12,7 @@ def resolve_menu(obj, info, *, id):
     try:
         return Menu.objects.get(pk=id)
     except Menu.DoesNotExist:
-        return None
+        raise InvalidMenuError("Invalid menu id")
 
 
 @menu_query.field("menus")
