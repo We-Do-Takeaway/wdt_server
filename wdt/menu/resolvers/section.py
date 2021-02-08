@@ -1,6 +1,7 @@
 from ariadne import ObjectType
 
 from wdt.menu.models import Section
+from wdt.shared.exceptions import InvalidSectionError
 
 section_query = ObjectType("Query")
 section_type = ObjectType("Section")
@@ -11,7 +12,7 @@ def resolve_section(obj, info, *, id):
     try:
         return Section.objects.get(pk=id)
     except Section.DoesNotExist:
-        return None
+        raise InvalidSectionError("Invalid section id")
 
 
 @section_query.field("sections")

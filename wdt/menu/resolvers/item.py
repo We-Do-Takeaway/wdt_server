@@ -1,6 +1,7 @@
 from ariadne import ObjectType
 
 from wdt.menu.models import Item
+from wdt.shared.exceptions import InvalidItemError
 
 item_query = ObjectType("Query")
 
@@ -10,7 +11,7 @@ def resolve_item(obj, info, *, id):
     try:
         return Item.objects.get(pk=id)
     except Item.DoesNotExist:
-        return None
+        raise InvalidItemError("Invalid item id")
 
 
 @item_query.field("items")

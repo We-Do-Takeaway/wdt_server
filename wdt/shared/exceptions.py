@@ -12,3 +12,11 @@ class InvalidBasketError(Exception):
 
 class InvalidBasketOperation(Exception):
     pass
+
+
+class InvalidMenuError(Exception):
+    pass
+
+
+class InvalidSectionError(Exception):
+    pass
