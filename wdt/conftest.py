@@ -36,6 +36,7 @@ class CommonTestData:
     CHERRIES_ID = "124cec9c-0352-48a4-835f-5c4e3d45f69b"
     DESERT_ID = "6736bb37-64dc-4f3e-9251-4c2d47eef640"
     MENU_ID = "11ca8caa-e5dc-494d-bcfd-79fdeb34b1b1"
+    ORDER_ID = "305329a8-4111-41e0-9d5e-c81a00e7bc97"
     SAUSAGES_ID = "a4b463c9-f786-4945-af19-fb3103d3984b"
 
 

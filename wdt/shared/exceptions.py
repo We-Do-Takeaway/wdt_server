@@ -20,3 +20,11 @@ class InvalidMenuError(Exception):
 
 class InvalidSectionError(Exception):
     pass
+
+
+class InvalidOrderOperation(Exception):
+    pass
+
+
+class InvalidOrderError(Exception):
+    pass

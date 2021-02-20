@@ -44,24 +44,67 @@ type BasketItem {
   quantity: Int!
 }
 
+input BasketItemInput {
+  itemId: ID!
+  quantity: Int!
+}
+
+type Order {
+  address1: String!
+  address2: String
+  createdAt: DateTime!
+  deliveryInstructions: String
+  email: String!
+  id: ID!
+  items: [OrderItem!]!
+  name: String!
+  phone: String
+  postcode: String!
+  town: String!
+}
+
+type OrderItem {
+  description: String
+  id: ID!
+  name: String!
+  quantity: Int!
+  photo: String
+}
+
+input AddOrderInput {
+  address1: String!
+  address2: String
+  deliveryInstructions: String
+  email: String!
+  items: [OrderItemInput!]!
+  name: String!
+  phone: String
+  postcode: String!
+  town: String!
+}
+
+input OrderItemInput {
+  id: ID!
+  quantity: Int!
+}
+
 type Query {
   basket(id: ID!): Basket
   item(id: ID!): Item
   items: [Item!]!
   menu(id: ID!): Menu
   menus: [Menu!]!
+  order(id: ID!): Order!
   section(id: ID!): Section
   sections: [Section!]!
 }
 
-input BasketItemInput {
-  itemId: ID!
-  quantity: Int!
-}
-
 type Mutation {
   addBasketItem(basketId: ID!, basketItem: BasketItemInput!): Basket!
+  addOrder(order: AddOrderInput!): Order!
   updateBasketItem(basketId: ID!, basketItem: BasketItemInput!): Basket!
   removeBasketItem(basketId: ID!, itemId: ID!): Basket!
   clearBasket(basketId: ID!): Basket!
 }
+
+scalar DateTime
