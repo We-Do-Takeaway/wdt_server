@@ -2,7 +2,7 @@ import copy
 from http import HTTPStatus
 
 import pytest
-
+from dateutil.parser import isoparse
 
 MUTATION_QUERY = """
 mutation AddOrder($order: AddOrderInput!) {
@@ -16,6 +16,7 @@ mutation AddOrder($order: AddOrderInput!) {
     phone
     email
     deliveryInstructions
+    createdAt
     items {
       id
       description
@@ -59,28 +60,23 @@ class TestAddOrder:
         assert response.status_code == HTTPStatus.OK
         order = response.json()["data"]["addOrder"]
 
-        order_id = order["id"]
-
-        assert order == {
-            "id": order_id,
-            "name": NAME,
-            "address1": ADDRESS1,
-            "address2": ADDRESS2,
-            "town": TOWN,
-            "postcode": POSTCODE,
-            "phone": PHONE,
-            "email": EMAIL,
-            "deliveryInstructions": INSTRUCTIONS,
-            "items": [
-                {
-                    "id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
-                    "description": "Big bowl of cherries",
-                    "name": "Bowl of cherries",
-                    "photo": "bowlcherry.jpg",
-                    "quantity": 1,
-                },
-            ],
-        }
+        assert order["name"] == NAME
+        assert order["address1"] == ADDRESS1
+        assert order["address2"] == ADDRESS2
+        assert order["town"] == TOWN
+        assert order["postcode"] == POSTCODE
+        assert order["phone"] == PHONE
+        assert order["email"] == EMAIL
+        assert order["deliveryInstructions"] == INSTRUCTIONS
+        assert order["items"] == [
+            {
+                "id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+                "description": "Big bowl of cherries",
+                "name": "Bowl of cherries",
+                "photo": "bowlcherry.jpg",
+                "quantity": 1,
+            },
+        ]
 
     def test_add_minimally_populated_valid_order(self, graphql_request, test_values):
         minimal_variables = copy.deepcopy(variables)
@@ -92,28 +88,28 @@ class TestAddOrder:
         assert response.status_code == HTTPStatus.OK
         order = response.json()["data"]["addOrder"]
 
-        order_id = order["id"]
+        assert order["name"] == NAME
+        assert order["address1"] == ADDRESS1
+        assert order["address2"] is None
+        assert order["town"] == TOWN
+        assert order["postcode"] == POSTCODE
+        assert order["phone"] is None
+        assert order["email"] == EMAIL
+        assert order["deliveryInstructions"] is None
+        assert order["items"] == [
+            {
+                "id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+                "description": "Big bowl of cherries",
+                "name": "Bowl of cherries",
+                "photo": "bowlcherry.jpg",
+                "quantity": 1,
+            },
+        ]
 
-        assert order == {
-            "id": order_id,
-            "name": NAME,
-            "address1": ADDRESS1,
-            "address2": None,
-            "town": TOWN,
-            "postcode": POSTCODE,
-            "phone": None,
-            "email": EMAIL,
-            "deliveryInstructions": None,
-            "items": [
-                {
-                    "id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
-                    "description": "Big bowl of cherries",
-                    "name": "Bowl of cherries",
-                    "photo": "bowlcherry.jpg",
-                    "quantity": 1,
-                },
-            ],
-        }
+    def test_validate_created_at(self, graphql_request, test_values):
+        response = graphql_request(MUTATION_QUERY, variables=variables)
+        assert response.status_code == HTTPStatus.OK
+        isoparse(response.json()["data"]["addOrder"]["createdAt"])
 
     def test_add_missing_address1(self, graphql_request, test_values):
         test_variables = copy.deepcopy(variables)
