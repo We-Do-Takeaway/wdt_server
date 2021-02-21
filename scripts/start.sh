@@ -10,7 +10,7 @@ ${BASH_SOURCE%/*}/wait_for_database.sh
 python ./manage.py migrate --noinput
 
 if [[ -n "$DEV" ]]; then
-  python ./manage.py loaddata
+  python manage.py loaddata wdt/fixtures/data.json
 fi
 
 gunicorn wdt.wsgi --access-logfile - --access-logformat "$GUNICORN_ACCESS_LOG_FORMAT" --bind="$HOST:$PORT"

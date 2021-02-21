@@ -12,6 +12,7 @@ services:
     environment:
       - DATABASE_URL=postgres://wdt:password@db:5432/wdt
       - SECRET_KEY=secret
+      - DEV=True
     depends_on:
       - db
     ports:
