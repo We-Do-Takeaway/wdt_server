@@ -39,5 +39,10 @@ class TestClearBasket:
 
         response = graphql_request(MUTATION_QUERY, variables=variables)
         assert response.status_code == HTTPStatus.OK
-        errors = response.json()["errors"]
-        assert errors[0]["message"] == "Invalid basket id"
+        response_data = response.json()["data"]
+        assert response_data == {
+            "clearBasket": {
+                "id": test_values.BASKET_ID,
+                "items": [],
+            },
+        }
