@@ -39,7 +39,7 @@ class TestGetBasket:
                         "id": test_values.CHERRIES_ID,
                         "description": "Big bowl of cherries",
                         "name": "Bowl of cherries",
-                        "photo": "bowlcherry.jpg",
+                        "photo": "/images/default-thumbnail.png",
                         "quantity": 1,
                     },
                 ],

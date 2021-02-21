@@ -52,7 +52,7 @@ class TestGetSection:
                 "id": test_values.DESERT_ID,
                 "name": "Desert",
                 "description": "The best stuff",
-                "photo": "desert.jpg",
+                "photo": "/images/default-thumbnail.png",
                 "displayOrder": 2,
             },
         }
@@ -83,7 +83,7 @@ class TestGetSection:
             "id": "83a40fc1-59dc-447d-afe0-6dcfe94bbf20",
             "name": "Chocolate ice-cream surprise",
             "description": "An amazing mixture of chocolate and cherries",
-            "photo": "icecreamsurp.jpg",
+            "photo": "/images/default-thumbnail.png",
             "displayOrder": 1,
         }
 
@@ -91,6 +91,6 @@ class TestGetSection:
             "id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
             "name": "Bowl of cherries",
             "description": "Big bowl of cherries",
-            "photo": "bowlcherry.jpg",
+            "photo": "/images/default-thumbnail.png",
             "displayOrder": 2,
         }

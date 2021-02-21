@@ -32,7 +32,7 @@ class TestGetItem:
                 "id": test_values.SAUSAGES_ID,
                 "name": "Plate of sausages",
                 "description": "Big bowl of sausages",
-                "photo": "plate-sausages.jpg",
+                "photo": "/images/default-thumbnail.png",
             },
         }
 

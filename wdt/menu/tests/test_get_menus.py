@@ -32,7 +32,7 @@ class TestGetMenus:
                         + "feel like you are going crazy. Have an all day breakfast, your mothers Sunday roast "
                         + "or help yourself to the biggest bowl of ice-cream will lots of extras"
                     ),
-                    "photo": "cafe.jpg",
+                    "photo": "/images/default-thumbnail.png",
                 },
             ],
         }

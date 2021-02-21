@@ -124,7 +124,7 @@ def resolve_clear_basket(obj, info, *, basket_id):
         basket = Basket.objects.get(pk=basket_id)
         basket.basketitem_set.all().delete()
     except Basket.DoesNotExist:
-        basket = Basket(id=id)
+        basket = Basket(id=basket_id)
         basket.save()
 
     return basket
