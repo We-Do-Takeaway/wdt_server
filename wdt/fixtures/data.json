@@ -148,19 +148,6 @@
     }
   },
   {
-    "model": "basket.basket",
-    "pk": "03b9d6a5-2561-4567-90e9-452e8b39ce86"
-  },
-  {
-    "model": "basket.basketitem",
-    "pk": "c7a6617f-ab11-4218-b5c4-61312489ab9d",
-    "fields": {
-      "basket_id": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
-      "item_id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
-      "quantity": 1
-    }
-  },
-  {
     "model": "order.order",
     "pk": "305329a8-4111-41e0-9d5e-c81a00e7bc97",
     "fields": {
@@ -181,6 +168,20 @@
     "pk": "28077b16-e79d-4b78-b0e0-12152c3a53fd",
     "fields": {
       "order_id": "305329a8-4111-41e0-9d5e-c81a00e7bc97",
+      "item_id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "basket.basket",
+    "pk": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
+    "fields": {}
+  },
+  {
+    "model": "basket.basketitem",
+    "pk": "c7a6617f-ab11-4218-b5c4-61312489ab9d",
+    "fields": {
+      "basket_id": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
       "item_id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
       "quantity": 1
     }
