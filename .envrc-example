@@ -1,0 +1,9 @@
+layout pyenv 3.9.1
+
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+export DATABASE_URL=postgres://user:password@localhost/wdt
+export SECRET_KEY=secret
+export DEBUG=True
+
