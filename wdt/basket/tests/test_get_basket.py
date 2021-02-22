@@ -39,7 +39,7 @@ class TestGetBasket:
                         "id": test_values.CHERRIES_ID,
                         "description": "Big bowl of cherries",
                         "name": "Bowl of cherries",
-                        "photo": "bowlcherry.jpg",
+                        "photo": "/images/default-thumbnail.png",
                         "quantity": 1,
                     },
                 ],
@@ -47,11 +47,17 @@ class TestGetBasket:
         }
 
     def test_get_invalid_menu(self, graphql_request, test_values):
+        fake_id = str(uuid.uuid4())
         variables = {
-            "id": str(uuid.uuid4()),
+            "id": fake_id,
         }
 
         response = graphql_request(QUERY, variables=variables)
         assert response.status_code == HTTPStatus.OK
-        errors = response.json()["errors"]
-        assert errors[0]["message"] == "Invalid basket id"
+        response_data = response.json()["data"]
+        assert response_data == {
+            "basket": {
+                "id": fake_id,
+                "items": [],
+            },
+        }

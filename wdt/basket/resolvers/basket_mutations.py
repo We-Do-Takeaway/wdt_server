@@ -122,9 +122,9 @@ def resolve_clear_basket(obj, info, *, basket_id):
     # Check the basket exists and fetch it for the response
     try:
         basket = Basket.objects.get(pk=basket_id)
+        basket.basketitem_set.all().delete()
     except Basket.DoesNotExist:
-        raise InvalidBasketError(INVALID_BASKET)
-
-    basket.basketitem_set.all().delete()
+        basket = Basket(id=basket_id)
+        basket.save()
 
     return basket

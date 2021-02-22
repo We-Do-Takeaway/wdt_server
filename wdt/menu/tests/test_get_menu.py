@@ -54,7 +54,7 @@ class TestGetMenu:
                     + "feel like you are going crazy. Have an all day breakfast, your mothers Sunday roast "
                     + "or help yourself to the biggest bowl of ice-cream will lots of extras"
                 ),
-                "photo": "cafe.jpg",
+                "photo": "/images/default-thumbnail.png",
             },
         }
 
@@ -83,14 +83,14 @@ class TestGetMenu:
                 "id": "ac2f8c68-f358-4708-9e81-fba155fab20f",
                 "name": "Main",
                 "description": "Stuff to fill you up",
-                "photo": "main.jpg",
+                "photo": "/images/default-thumbnail.png",
                 "displayOrder": 1,
             },
             {
                 "id": "6736bb37-64dc-4f3e-9251-4c2d47eef640",
                 "name": "Desert",
                 "description": "The best stuff",
-                "photo": "desert.jpg",
+                "photo": "/images/default-thumbnail.png",
                 "displayOrder": 2,
             },
         ]

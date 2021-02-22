@@ -33,7 +33,6 @@ type Item {
 type Basket {
   id: ID!
   items: [BasketItem]
-  ownerId: ID!
 }
 
 type BasketItem {

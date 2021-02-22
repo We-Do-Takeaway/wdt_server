@@ -5,7 +5,7 @@
     "fields": {
       "description": "The cafe is all about food to make you feel better when you can't face the world or feel like you are going crazy. Have an all day breakfast, your mothers Sunday roast or help yourself to the biggest bowl of ice-cream will lots of extras",
       "name": "Cafe comfort and waffles",
-      "photo": "cafe.jpg"
+      "photo": "/images/default-thumbnail.png"
     }
   },
   {
@@ -14,7 +14,7 @@
     "fields": {
       "description": "Big bowl of cherries",
       "name": "Bowl of cherries",
-      "photo": "bowlcherry.jpg"
+      "photo": "/images/default-thumbnail.png"
     }
   },
   {
@@ -23,7 +23,7 @@
     "fields": {
       "description": "An amazing mixture of chocolate and cherries",
       "name": "Chocolate ice-cream surprise",
-      "photo": "icecreamsurp.jpg"
+      "photo": "/images/default-thumbnail.png"
     }
   },
   {
@@ -32,7 +32,7 @@
     "fields": {
       "description": "Big bowl of sausages",
       "name": "Plate of sausages",
-      "photo": "plate-sausages.jpg"
+      "photo": "/images/default-thumbnail.png"
     }
   },
   {
@@ -42,7 +42,7 @@
       "menu": "11ca8caa-e5dc-494d-bcfd-79fdeb34b1b1",
       "description": "The best stuff",
       "name": "Desert",
-      "photo": "desert.jpg",
+      "photo": "/images/default-thumbnail.png",
       "display_order": 2
     }
   },
@@ -53,7 +53,7 @@
       "menu": "11ca8caa-e5dc-494d-bcfd-79fdeb34b1b1",
       "description": "Stuff to fill you up",
       "name": "Main",
-      "photo": "main.jpg",
+      "photo": "/images/default-thumbnail.png",
       "display_order": 1
     }
   },
@@ -63,7 +63,7 @@
     "fields": {
       "description": "Rich yummy belgium chocolate",
       "name": "Chocolate ice cream",
-      "photo": "chocicecream.jpg"
+      "photo": "/images/default-thumbnail.png"
     }
   },
   {
@@ -72,7 +72,7 @@
     "fields": {
       "description": "In a jar",
       "name": "Cherry",
-      "photo": "cherry.jpg"
+      "photo": "/images/default-thumbnail.png"
     }
   },
   {
@@ -81,7 +81,7 @@
     "fields": {
       "description": "Locally reared",
       "name": "Sausage",
-      "photo": "sausage.jpg"
+      "photo": "/images/default-thumbnail.png"
     }
   },
   {
@@ -148,22 +148,6 @@
     }
   },
   {
-    "model": "basket.basket",
-    "pk": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
-    "fields": {
-      "owner_id": "03b9d6a5-2561-4567-90e9-452e8b39ce86"
-    }
-  },
-  {
-    "model": "basket.basketitem",
-    "pk": "c7a6617f-ab11-4218-b5c4-61312489ab9d",
-    "fields": {
-      "basket_id": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
-      "item_id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
-      "quantity": 1
-    }
-  },
-  {
     "model": "order.order",
     "pk": "305329a8-4111-41e0-9d5e-c81a00e7bc97",
     "fields": {
@@ -184,6 +168,20 @@
     "pk": "28077b16-e79d-4b78-b0e0-12152c3a53fd",
     "fields": {
       "order_id": "305329a8-4111-41e0-9d5e-c81a00e7bc97",
+      "item_id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "basket.basket",
+    "pk": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
+    "fields": {}
+  },
+  {
+    "model": "basket.basketitem",
+    "pk": "c7a6617f-ab11-4218-b5c4-61312489ab9d",
+    "fields": {
+      "basket_id": "03b9d6a5-2561-4567-90e9-452e8b39ce86",
       "item_id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
       "quantity": 1
     }

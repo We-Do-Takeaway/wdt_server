@@ -35,9 +35,15 @@ class TestClearBasket:
         }
 
     def test_clear_invalid_basket(self, graphql_request, test_values):
-        variables = {"basketId": str(uuid.uuid4())}
+        basket_id = str(uuid.uuid4())
+        variables = {"basketId": basket_id}
 
         response = graphql_request(MUTATION_QUERY, variables=variables)
         assert response.status_code == HTTPStatus.OK
-        errors = response.json()["errors"]
-        assert errors[0]["message"] == "Invalid basket id"
+        response_data = response.json()["data"]
+        assert response_data == {
+            "clearBasket": {
+                "id": basket_id,
+                "items": [],
+            },
+        }

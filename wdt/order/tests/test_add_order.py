@@ -73,7 +73,7 @@ class TestAddOrder:
                 "id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
                 "description": "Big bowl of cherries",
                 "name": "Bowl of cherries",
-                "photo": "bowlcherry.jpg",
+                "photo": "/images/default-thumbnail.png",
                 "quantity": 1,
             },
         ]
@@ -101,7 +101,7 @@ class TestAddOrder:
                 "id": "124cec9c-0352-48a4-835f-5c4e3d45f69b",
                 "description": "Big bowl of cherries",
                 "name": "Bowl of cherries",
-                "photo": "bowlcherry.jpg",
+                "photo": "/images/default-thumbnail.png",
                 "quantity": 1,
             },
         ]

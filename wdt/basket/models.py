@@ -15,8 +15,6 @@ class Basket(models.Model):
         editable=False,
     )
 
-    owner_id = models.UUIDField(editable=True, blank=True, null=True)
-
 
 class BasketItem(models.Model):
     """ Items in a basket """
