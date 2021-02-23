@@ -60,3 +60,8 @@ Finally start up the server
 ```
 manage.py runserver
 ```
+
+
+
+## VSCode Workspace
+This is WIP. Currently you can open this project in a vscode dev container but you will need to manually run the first `poetry install` and also run `pre-commit install`.
