@@ -139,3 +139,7 @@ cython_debug/
 
 .direnv
 test-output
+.idea
+.envrc
+.env
+.vscode
