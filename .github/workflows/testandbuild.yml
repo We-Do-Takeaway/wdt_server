@@ -182,7 +182,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build latest
-        run: docker build . --tag wedotakeaway/wdt-server:${env.GIT_COMMIT}
+        run: docker build . --tag wedotakeaway/wdt-server:${env.GITHUB_SHA}
 
   dockerPush:
     name: Docker Push
@@ -200,7 +200,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build latest
-        run: docker build . --tag wedotakeaway/wdt-server:${env.GIT_COMMIT}
+        run: docker build . --tag wedotakeaway/wdt-server:${env.GITHUB_SHA}
 
       - name: Push latest
-        run: docker push wedotakeaway/wdt-server:${env.GIT_COMMIT}
+        run: docker push wedotakeaway/wdt-server:${env.GITHUB_SHA}
