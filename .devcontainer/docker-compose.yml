@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    environment:
+      - DATABASE_URL=postgres://wdt:password@db:5432/wdt
+      - SECRET_KEY=secret
+      - DEV=True
+      - DJANGO_SETTINGS_MODULE=wdt.settings
+    ports:
+      - 8000:8000
+    volumes:
+      - ..:/workspace
+    user: vscode
+    command: /workspace/.devcontainer/startup.sh
+  db:
+    image: postgres:13.2-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=wdt
+      - POSTGRES_USER=wdt
+      - POSTGRES_PASSWORD=password
