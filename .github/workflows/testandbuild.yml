@@ -204,3 +204,19 @@ jobs:
 
       - name: Push latest
         run: docker push wedotakeaway/wdt-server:latest
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: dockerPush
+
+    steps:
+      - name: Update and restart server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.APP_SERVER_HOST }}
+          username: ${{ secrets.APP_SERVER_USERNAME }}
+          key: ${{ secrets.APP_SERVER_KEY }}
+          port: ${{ secrets.APP_SERVER_PORT }}
+          script: 'restart-wdt.sh'
